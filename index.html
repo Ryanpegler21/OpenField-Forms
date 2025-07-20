@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OpenField - Athlete Sign Up</title>
+  <style>
+    :root {
+      --navy: #0A1128;
+      --lime: #99E265;
+      --text-light: #f0f4f8;
+      --text-dark: #0a1a2f;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--navy);
+      color: var(--text-light);
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      flex-direction: column;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: white;
+    }
+    p {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      max-width: 600px;
+      margin: 1rem auto;
+    }
+    .cta-button {
+      background: var(--lime);
+      border: none;
+      color: var(--navy);
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      transition: 0.3s;
+    }
+    .cta-button:hover {
+      background: #b8f184;
+    }
+    .form-section {
+      display: none;
+      background: white;
+      color: var(--text-dark);
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 2rem auto;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    .form-section h2 {
+      color: var(--navy);
+    }
+    label {
+      display: block;
+      margin: 1rem 0 0.5rem;
+      font-weight: 600;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button.submit {
+      margin-top: 1.5rem;
+      background: var(--navy);
+      color: white;
+      font-weight: bold;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .logo {
+      width: 120px;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Cover Page -->
+  <div class="container" id="cover">
+    <img src="https://i.postimg.cc/MpnfNbCB/Open-Field-LOGO-removebg-preview.png" alt="OpenField Logo" class="logo">
+    <h1>Welcome to OpenField</h1>
+    <p>The premier platform empowering overlooked athletes with real NIL opportunities, game-changing exposure, and a direct path to the next level.</p>
+    <p style="color:#99E265; font-weight: 500;">You’ve been invited to be among the first athletes shaping the future of OpenField.</p>
+    <button class="cta-button" onclick="openForm()">Apply Now</button>
+  </div>
+
+  <!-- Form Page -->
+  <div class="form-section" id="form-section">
+    <h2>Athlete Application</h2>
+    <form id="athleteForm" name="submit-to-google-sheet">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="Name" required />
+
+      <label for="email">Email or Phone</label>
+      <input type="text" id="email" name="Contact" required />
+
+      <label for="instagram">Instagram Handle</label>
+      <input type="text" id="instagram" name="Instagram" />
+
+      <label for="school">Current School</label>
+      <input type="text" id="school" name="School" required />
+
+      <label for="sport">Sport</label>
+      <select id="sport" name="Sport" required>
+        <option value="">Select Sport</option>
+        <option>Football</option>
+        <option>Basketball</option>
+        <option>Soccer</option>
+        <option>Track & Field</option>
+        <option>Baseball</option>
+        <option>Wrestling</option>
+        <option>Other</option>
+      </select>
+
+      <button class="submit" type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    function openForm() {
+      document.getElementById('cover').style.display = 'none';
+      document.getElementById('form-section').style.display = 'block';
+    }
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbytLZ3QhRbrceAKBXRi0SO2fN-wYVjXGdBVez-eSnRuq-e5hiq5QiwmmH_YZi6TDe7O/exec';
+    const form = document.forms['submit-to-google-sheet'];
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(scriptURL, {
+        method: 'POST',
+        body: new FormData(form)
+      })
+      .then(() => {
+        alert("Application submitted successfully!");
+        form.reset();
+      })
+      .catch(() => alert("Error submitting form. Try again."));
+    });
+  </script>
+</body>
+</html>
