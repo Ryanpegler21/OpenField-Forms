@@ -24,7 +24,7 @@ form.addEventListener('submit', async (e) => {
     }
 
     // 3. Handle success
-    formStatus.textContent = "Thank you for joining! We'll be in touch soon.";
+    formStatus.textContent = "Thank you! We'll be in touch soon.";
     formStatus.className = 'success';
     formStatus.style.display = 'block';
     form.reset();
@@ -44,4 +44,6 @@ form.addEventListener('submit', async (e) => {
     submitButton.removeChild(spinner);
   }
 });
+
+
 
