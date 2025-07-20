@@ -7,7 +7,7 @@ const formStatus = document.getElementById('form-status');
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  // 1. Show loading state
+  // Show loading state
   submitButton.disabled = true;
   buttonText.style.display = 'none';
   const spinner = document.createElement('div');
@@ -16,34 +16,22 @@ form.addEventListener('submit', async (e) => {
   formStatus.style.display = 'none';
 
   try {
-    // 2. Send the data
+    // Send form data
     const response = await fetch(scriptURL, { method: 'POST', body: new FormData(form) });
+    if (!response.ok) throw new Error(`Status: ${response.status}`);
 
-    if (!response.ok) {
-      throw new Error(`Network response was not ok. Status: ${response.status}`);
-    }
-
-    // 3. Handle success
-    formStatus.textContent = "Thank you! We'll be in touch soon.";
-    formStatus.className = 'success';
-    formStatus.style.display = 'block';
-    form.reset();
-    form.style.display = 'none'; // Optionally hide form on success
+    // Redirect to thank-you page
+    window.location.href = 'thank-you.html';
 
   } catch (error) {
-    // 4. Handle errors
     console.error('Error!', error.message);
     formStatus.textContent = 'Something went wrong. Please try again.';
     formStatus.className = 'error';
     formStatus.style.display = 'block';
-
   } finally {
-    // 5. Reset button state (only if there was an error)
+    // Reset button state if there's an error
     submitButton.disabled = false;
     buttonText.style.display = 'inline';
     submitButton.removeChild(spinner);
   }
 });
-
-
-
