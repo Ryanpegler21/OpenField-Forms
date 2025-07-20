@@ -18,17 +18,17 @@
       <h1>Welcome to OpenField</h1>
       <p>The premier platform empowering overlooked athletes with real NIL opportunities, game-changing exposure, and a direct path to the next level.</p>
       <p class="invite-text">You’ve been invited to be among the first athletes shaping the future of OpenField.</p>
-      <a href="#signup" class="cta">Scroll to Join</a>
+      <a href="#signup" class="cta">Join Waitlist</a>
     </header>
 
     <!-- FORM SECTION -->
     <section id="signup" class="anchor">
-      <h1 class="highlight-text">Join OpenField</h1>
-      <p>Complete the form below to secure your spot.</p>
+      <h1 class="highlight-text">Join OpenField's Waitlist</h1>
+      <p>Complete the form below to claim your exclusive invitation to OpenField's charter athlete class.</p>
       <form id="athleteForm" name="submit-to-google-sheet">
         <div class="form-group">
           <label for="name">Full Name</label>
-          <input type="text" id="name" name="Name" placeholder="e.g. Jordan Hayes" required autocomplete="name" />
+          <input type="text" id="name" name="Name" placeholder="First Last" required autocomplete="name" />
         </div>
         <div class="form-group">
           <label for="contact">Email or Phone</label>
@@ -39,11 +39,26 @@
         </div>
         <div class="form-group">
           <label for="instagram">Instagram Handle</label>
-          <input type="text" id="instagram" name="Instagram" placeholder="@jordanhayes" autocomplete="username" />
+          <input type="text" id="instagram" name="Instagram" placeholder="@username" autocomplete="username" />
         </div>
         <div class="form-group">
-          <label for="school">Current School</label>
-          <input type="text" id="school" name="School" placeholder="e.g. Illinois Wesleyan" required autocomplete="organization" />
+          <label for="level">Current Level</label>
+          <select id="level" name="Level" required>
+            <option value="" disabled selected>Select your level</option>
+            <option>High School</option>
+            <option>Junior College (JUCO)</option>
+            <option>NCAA Division III</option>
+            <option>NCAA Division II</option>
+            <option>NCAA Division I</option>
+            <option>NAIA</option>
+            <option>Prep/Postgrad</option>
+            <option>Pro</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="school">Current Program</label>
+          <input type="text" id="school" name="School" placeholder="e.g. University of Illinois" required autocomplete="organization" />
         </div>
         <div class="form-group">
           <label for="sport">Sport</label>
