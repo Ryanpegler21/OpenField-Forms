@@ -4,8 +4,8 @@
   --light: #E1E8F0;
   --slate: #cbd5e1;
   --dark-blue: #152040;
-  --success: #4ade80;
-  --error: #f87171;
+  --success: #99E265
+  --error: #FF0000;
 }
 
 * {
@@ -199,4 +199,6 @@ form label {
     font-size: 1rem;
   }
 }
+
+
 
